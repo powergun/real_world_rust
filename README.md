@@ -4,7 +4,9 @@
 
 ## Data Munging
 
-## Algorithms
+[algorithms](src/algorithms)
+
+[containers](src/containers)
 
 ## System Programming
 
