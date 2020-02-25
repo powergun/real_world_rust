@@ -1,17 +1,17 @@
 # Real World Rust
 
-## Memory Model
+[memory model](src/memory_model)
 
-## Data Munging
+[data munging](src/data_munging)
 
 [algorithms](src/algorithms)
 
 [containers](src/containers)
 
-## System Programming
+[system programming](src/system_programming)
 
-## Performance
+[performance](src/performance)
 
-## Concurrency & Parallelism
+[concurrency & parallelism](src/con_par)
 
-## Debugging & Black art
+[debugging & black art](src/debugging)
