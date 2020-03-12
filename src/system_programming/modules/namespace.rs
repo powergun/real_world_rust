@@ -2,7 +2,7 @@
 //$(which mkdir) -p ${dst};
 //$(which rustc) -o "${out}" 1>&2 "$0" && "${out}" "$@"; exit $?
 
-mod doom {
+pub mod doom {
     // default access level is private
     pub fn map(episode: i32, level: i32) -> String {
         format!("e{}m{}", episode, level)

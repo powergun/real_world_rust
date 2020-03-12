@@ -3,6 +3,7 @@
 //$(which rustc) -o "${out}" 1>&2 "$0" && "${out}" "$@"; exit $?
 
 // the content lives in doomlib/mod.rs OR doomlib.rs
+#[allow(unused_imports)]
 use super::doomlib;
 
 // prefer folder structure for nested modules
