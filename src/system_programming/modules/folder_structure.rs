@@ -1,11 +1,11 @@
-//$(which true); dst=/var/tmp/sut; out=${dst}/$0.bin; 
-//$(which mkdir) -p ${dst}; 
+//$(which true); dst=/var/tmp/sut; out=${dst}/$0.bin;
+//$(which mkdir) -p ${dst};
 //$(which rustc) -o "${out}" 1>&2 "$0" && "${out}" "$@"; exit $?
 
 // the content lives in doomlib/mod.rs OR doomlib.rs
-mod doomlib;  
+use super::doomlib;
 
-// prefer folder structure for nested modules 
+// prefer folder structure for nested modules
 /*
 .
 ├── doomlib  <-- mod doomlib;
@@ -14,7 +14,8 @@ mod doomlib;
 ├── folder_structure.rs <-- user of doomlib
 */
 
-fn main() {
+#[test]
+fn demo() {
     assert_eq!(doomlib::map(3, 3), "e3m3");
     assert_eq!(doomlib::creaturelib::creature_name(), "imp");
 }
