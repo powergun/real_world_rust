@@ -1,3 +1,5 @@
+// see also bin/cat.rs for another simple example
+
 use std::env;
 
 fn _demo_read_env_var() {
