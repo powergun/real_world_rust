@@ -9,3 +9,31 @@ edition = "2018"
 [dependencies]
 cached = "0.12.0"
 lazy_static = "1.4.0"
+
+[[bin]]
+name = "cat"
+path = "src/bin/cat.rs"
+
+[[bin]]
+name = "echo"
+path = "src/bin/echo.rs"
+
+# see:
+# https://doc.rust-lang.org/nightly/cargo/reference/cargo-targets.html
+# https://doc.rust-lang.org/nightly/cargo/guide/project-layout.html
+# A helpful example of [lib] section
+# https://doc.rust-lang.org/nightly/cargo/reference/cargo-targets.html#configuring-a-target
+# This is the copy of the example with my modification
+[lib]
+name = "lib_rw_rust"     # The name of the target.
+path = "src/lib/lib.rs"       # The source file of the target.
+test = true            # Is tested by default.
+doctest = false         # Documentation examples are tested by default.
+bench = false           # Is benchmarked by default.
+doc = true             # Is documented by default.
+plugin = false         # Used as a compiler plugin (deprecated).
+proc-macro = false     # Set to `true` for a proc-macro library.
+harness = true         # Use libtest harness.
+edition = "2018"       # The edition of the target.
+crate-type = ["rlib"]   # The crate types to generate.
+required-features = [] # Features required to build this target (N/A for lib).

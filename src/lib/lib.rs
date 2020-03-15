@@ -1,5 +1,7 @@
+#[allow(unused_imports)]
 #[macro_use]
 extern crate cached;
+#[allow(unused_imports)]
 #[macro_use]
 extern crate lazy_static;
 
