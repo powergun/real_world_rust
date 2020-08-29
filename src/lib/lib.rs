@@ -13,3 +13,4 @@ pub mod fp;
 pub mod memory_model;
 pub mod performance;
 pub mod system_programming;
+pub mod metaprogramming;
