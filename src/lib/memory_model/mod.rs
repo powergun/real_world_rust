@@ -5,3 +5,4 @@ pub mod ref_counter;
 pub mod refcell_interior_mut;
 pub mod smart_pointers;
 pub mod std_mem;
+pub mod internal_mutability_pattern;

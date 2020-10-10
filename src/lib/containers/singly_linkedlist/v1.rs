@@ -1,7 +1,7 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
-// algorithms with rust L1482
+// hands on algorithms and data structures with rust L1402
 type NodeType = Rc<RefCell<Node>>;
 type SingleLink = Option<NodeType>;
 
@@ -10,6 +10,25 @@ pub struct Node {
     pub value: String,
     // heap alloc, pointer size, let the compiler to decide
     // the size of this struct
+    // 
+    // L1402, the reason `next` can not be Option<Node> is that
+    // the compiler needs to know the size of `Node` which results
+    // in an infinite loop
+    // Rc<> solves this problem by turning `Node` (or whatever
+    // inner type) into a reference type 
+    // (recall most C++ compilers treat references as pointers)
+    // Box<> is another kind of reference types
+    
+    // L1411
+    // storing each node item in a Rc<RefCell<T>> provides the
+    // ability to retrieve and replace data as needed
+    // the "internal mutability pattern"
+
+    // to access the inner type like evoking its methods, I can
+    // use dot operator on the Rc<T> directly;
+    // see the implementation of append() below, which calls
+    // borrow_mut() from Rc<> to invoke this method on the
+    // inner RefCell type
     pub next: SingleLink,
 }
 
