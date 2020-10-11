@@ -3,7 +3,7 @@ struct StringHolder {
     v: String,
 }
 
-fn _demo_clone() {
+pub fn demo_clone() {
     // algorithms with rust L1276
     // when a variable is assigned to another variable, the
     // compiler will typically copy the value implicitly
@@ -33,5 +33,5 @@ fn _demo_clone() {
 
 #[test]
 fn demo_all() {
-    _demo_clone();
+    demo_clone();
 }

@@ -21,7 +21,7 @@
 install rustup; update rustup to the latest version; update rust
 toolchain to the latest version;
 
-`cargo build` to build the artifact, although `cargo test` is often
+`cargo build` to build the artifact; also `cargo test` is often
 used;
 
 install rust RLS in vscode and TOML language support; install prettier.
@@ -43,7 +43,7 @@ binary targets i.e.) therefore I can write
 
 `use lib_rw_rust::algorithms::iteration::filter::*;`
 
-in the executable's source file.
+in the executable source file. see: `bin/echo.rs`
 
 build the lib target using:
 
