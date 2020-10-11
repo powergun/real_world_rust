@@ -72,3 +72,16 @@ outside the project)
 
 `rlib` is the one I need (see `[lib]` section); I can run
 `cargo build --release` to create the release (opt) binary;
+
+### References
+
+<https://github.com/digikata/rust-lib-and-bin>
+
+(defining multiple exe targets)
+
+<https://doc.rust-lang.org/cargo/guide/project-layout.html>
+
+<https://stackoverflow.com/questions/26946646/rust-package-with-both-a-library-and-a-binary>
+
+(emphasizing the importance of naming the lib target, because
+the exe target will use its name to import the functions)
