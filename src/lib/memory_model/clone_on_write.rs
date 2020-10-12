@@ -16,10 +16,13 @@ impl<'a> Size<'a> {
     #[allow(dead_code)]
     fn new<S>(name: S) -> Self
     where
-        S: Into<Cow<'a, str>>,  // S must have Into trait;
+        S: Into<Cow<'a, str>>, // S must have Into trait;
     {
         let name: Cow<'a, str> = name.into();
-        Size{length: name.len(), name}
+        Size {
+            length: name.len(),
+            name,
+        }
     }
 }
 

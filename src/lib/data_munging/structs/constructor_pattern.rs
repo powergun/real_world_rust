@@ -18,12 +18,12 @@ impl Item {
     fn new(name: String, value: u32) -> Self {
         // rust supports "field init shorthand syntax"
         // see: https://doc.rust-lang.org/book/ch05-01-defining-structs.html
-        Item{name, value}
+        Item { name, value }
     }
 
     // setter method: requires mutable ref, & mut self
     #[allow(dead_code)]
-    fn set_value(& mut self, value: u32) {
+    fn set_value(&mut self, value: u32) {
         self.value = value;
     }
 

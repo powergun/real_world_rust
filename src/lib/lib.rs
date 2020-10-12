@@ -11,6 +11,6 @@ pub mod containers;
 pub mod data_munging;
 pub mod fp;
 pub mod memory_model;
+pub mod metaprogramming;
 pub mod performance;
 pub mod system_programming;
-pub mod metaprogramming;

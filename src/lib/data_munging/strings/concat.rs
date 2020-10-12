@@ -1,4 +1,3 @@
-
 // source:
 // rust std cookbook P/11
 #[test]
@@ -22,14 +21,14 @@ fn demo_string_concat() {
         assert_eq!("iddqd", s2);
     }
 
-    // by cloning 
+    // by cloning
     {
-            let s1 = "e1m1".to_string();
-            let s2 = "idkfa";
-            let ss = s1.clone() + s2;
-            assert_eq!("e1m1idkfa".to_string(), ss);
-            assert_eq!("e1m1".to_string(), s1);
-            assert_eq!("idkfa", s2);
+        let s1 = "e1m1".to_string();
+        let s2 = "idkfa";
+        let ss = s1.clone() + s2;
+        assert_eq!("e1m1idkfa".to_string(), ss);
+        assert_eq!("e1m1".to_string(), s1);
+        assert_eq!("idkfa", s2);
     }
 
     // by mutating
@@ -41,7 +40,6 @@ fn demo_string_concat() {
         assert_eq!("idkfa", s2);
     }
 }
-
 
 #[derive(Debug)]
 struct Log {
@@ -66,8 +64,8 @@ fn demo_string_concat_by_format_macro() {
         let ss = format!("there is {} {}", "a cow", 123);
         assert_eq!("there is a cow 123", ss);
     }
-    
-    // include certain (positional) param multiple times into 
+
+    // include certain (positional) param multiple times into
     // the string
     {
         let ss = format!("there {0} {0} {0}", 1);
@@ -76,19 +74,17 @@ fn demo_string_concat_by_format_macro() {
 
     // use keyword parameters
     {
-        let ss = format!(
-            "there {is} {a} {cow}",
-            is="is",
-            a="a",
-            cow="cow",
-        );
+        let ss = format!("there {is} {a} {cow}", is = "is", a = "a", cow = "cow",);
         assert_eq!("there is a cow", ss);
     }
 
     // use struct that derives debug strait
     // also see P/14 about Display trait
-    {   
-        let l = Log{name:"A".to_string(), length:1};
+    {
+        let l = Log {
+            name: "A".to_string(),
+            length: 1,
+        };
         let ss = format!("{:?}", l);
         assert_eq!("Log { name: \"A\", length: 1 }", ss);
     }

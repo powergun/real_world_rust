@@ -14,9 +14,10 @@ pub struct Item {
 impl Item {
     #[allow(dead_code)]
     fn new(name: String, value: i32) -> Rc<RefCell<Item>> {
-        Rc::new(RefCell::new(
-            Item{name: name, value: value}
-        ))
+        Rc::new(RefCell::new(Item {
+            name: name,
+            value: value,
+        }))
     }
 }
 

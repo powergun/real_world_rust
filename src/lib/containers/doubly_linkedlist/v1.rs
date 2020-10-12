@@ -12,11 +12,11 @@ pub struct Node {
 
 impl Node {
     fn new(_s: String) -> NodeType {
-        Rc::new(
-            RefCell::new(
-                Node { value: _s, next: None, prev: None }
-            )
-        )
+        Rc::new(RefCell::new(Node {
+            value: _s,
+            next: None,
+            prev: None,
+        }))
     }
 }
 
@@ -28,7 +28,11 @@ pub struct TransactionLog {
 
 impl TransactionLog {
     pub fn new_empty() -> TransactionLog {
-        TransactionLog { _head: None, _tail: None, _length: 0 }
+        TransactionLog {
+            _head: None,
+            _tail: None,
+            _length: 0,
+        }
     }
 
     pub fn head(&self) -> Link {
@@ -43,12 +47,12 @@ impl TransactionLog {
         self._length
     }
 
-    pub fn append(&mut self, _s : String) {
+    pub fn append(&mut self, _s: String) {
         let new_node = Node::new(_s);
         match self._tail.take() {
             None => {
                 self._head = Some(new_node.clone());
-            },
+            }
             Some(ref old_tail) => {
                 new_node.borrow_mut().prev = Some(old_tail.clone());
                 old_tail.borrow_mut().next = Some(new_node.clone());
@@ -87,8 +91,8 @@ impl Iterator for LogIterator {
                 let current_ref = current_cell.borrow();
                 result = Some(current_ref.value.clone());
                 current_ref.next.clone()
-            },
-            None => None
+            }
+            None => None,
         };
         result
     }
@@ -104,11 +108,11 @@ impl DoubleEndedIterator for LogIterator {
                 let current_ref = current_cell.borrow();
                 // clone the string to be returned
                 result = Some(current_ref.value.clone());
-                // don't want to pass the ownership from the 
+                // don't want to pass the ownership from the
                 // node to the iter, hence giving it a clone
                 current_ref.prev.clone()
-            },
-            None => None
+            }
+            None => None,
         };
         result
     }
