@@ -23,8 +23,12 @@ impl ItemBuilder {
         }
     }
 
+    // recall DA's spider project - this would be where ingress
+    // validation happens... (pure functions only)
     #[allow(dead_code)]
     fn build(&self) -> Result<Item, String> {
+
+        // "ingress validation"
         if self.name.len() == 0 {
             Err(format!("invalid name: {}", self.name))
         } else if self.value == 0 {
@@ -64,5 +68,10 @@ fn demo_builder_chain() {
             assert_eq!(231, i.value);
         }
         Err(_) => panic!("fail"),
+    }
+
+    match ItemBuilder::new().with_value(0).build() {
+        Ok(_) => panic!("shall not pass"),
+        Err(error) => assert_eq!("invalid value: 0", error),
     }
 }
