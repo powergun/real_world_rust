@@ -3,6 +3,9 @@
 // also explained in:
 // rust std lib cookbook P/38
 
+// see also:
+// https://crates.io/crates/dotenv
+
 #[allow(unused_imports)]
 use std::env;
 
@@ -24,4 +27,13 @@ fn demo_safe_read_one_env_var() {
     };
     assert_eq!("", f("asdasd".to_string()));
     assert_eq!("/bin/bash", f("SHELL".to_string()));
+
+    // P/39
+    // how to use the Result type: use unwrap_or_default()
+    // function to streamline the getter subroutine
+    assert_eq!("", env::var("asdasd").unwrap_or_default());
+    assert_eq!("/bin/bash", env::var("SHELL").unwrap_or_default());
+
+    // use unwrap_or
+    assert_eq!("XX", env::var("asdasd").unwrap_or("XX".to_string()));
 }
