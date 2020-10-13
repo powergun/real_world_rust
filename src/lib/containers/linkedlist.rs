@@ -13,6 +13,7 @@ fn demo_creation() {
     (1..10).for_each(|x| ll.push_back(x));
     // without : String the resulting value's type can not be
     // inferred
-    let s: String = ll.iter().map(|elem| format!("{} ", elem)).collect();
-    println!("{}", s);
+    let s: String = ll.iter().map(|elem| format!("{}", elem)).collect();
+    assert_eq!(9, ll.len());
+    assert_eq!(9, s.len());
 }
