@@ -27,7 +27,6 @@ impl ItemBuilder {
     // validation happens... (pure functions only)
     #[allow(dead_code)]
     fn build(&self) -> Result<Item, String> {
-
         // "ingress validation"
         if self.name.len() == 0 {
             Err(format!("invalid name: {}", self.name))
