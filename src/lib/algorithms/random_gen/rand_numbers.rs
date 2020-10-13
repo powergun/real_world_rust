@@ -36,3 +36,12 @@ fn demo_use_generator() {
     let z = rng.gen_range(0.0, 1.0);
     assert_eq!(true, z >= 0.0);
 }
+
+#[test]
+fn demo_rand_string() {
+    use rand::distributions::Alphanumeric;
+    use rand::{thread_rng, Rng};
+    let rand_string: String = thread_rng().sample_iter(&Alphanumeric).take(30).collect();
+
+    println!("{}", rand_string);
+}
