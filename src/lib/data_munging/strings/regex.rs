@@ -10,3 +10,22 @@ fn demo_find_date() {
 
     assert!(re.is_match("2014-01-01"));
 }
+
+#[test]
+fn demo_use_case_flag() {
+    use regex::Regex;
+    let re = Regex::new(r"(?i)^id\w{3,6}$").unwrap();
+
+    assert!(re.is_match("IDDQD"));
+}
+
+#[test]
+fn demo_use_regex_builder() {
+    use regex::RegexBuilder;
+    let re = RegexBuilder::new(r"^id\w{3,6}$")
+        .case_insensitive(true)
+        .build()
+        .unwrap();
+
+    assert!(re.is_match("IDDQD"));
+}
