@@ -16,6 +16,7 @@ fn demo_creation() {
     let xs = Vec::<i32>::new();
     assert_eq!(0, xs.len());
 
-    // to create a vec of ten 1s!
+    // to create a vec of five ones!
     assert_eq!(vec![1; 5], vec![1, 1, 1, 1, 1])
+    //              ^x ^num
 }
