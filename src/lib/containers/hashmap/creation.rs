@@ -18,7 +18,13 @@ pub fn fib(n: u64, map: &mut HashMap<u64, u64>) -> u64 {
 }
 
 #[test]
-fn demo_all() {
+fn demo_fib_by_hashmap() {
     let mut hm = HashMap::new();
-    (35..37).for_each(|x| println!("{} -> {}", x, fib(x, &mut hm)))
+    (40..42).for_each(|x| {
+        // with the hashmap optimization this will hang for a
+        // long time
+        for _ in 1..1000 {
+            assert!(fib(x, &mut hm) > 0);
+        }
+    });
 }
