@@ -20,3 +20,23 @@ fn demo_creation() {
     assert_eq!(vec![1; 5], vec![1, 1, 1, 1, 1])
     //              ^x ^num
 }
+
+#[test]
+fn demo_specify_capacity() {
+    let mut xs: Vec<i32> = Vec::with_capacity(10000);
+    assert_eq!(10000, xs.capacity());
+    xs.shrink_to_fit();
+    assert_eq!(0, xs.capacity());
+}
+
+#[test]
+fn demo_o1_swap_remove() {
+    let mut xs = vec![1, 2, 3, 4];
+    let x = xs.swap_remove(1);
+
+    // swap(1) swaps [1] with the last element, 4
+    // step one: [1, 4, 3, 2]
+    // step two: [1, 4, 3]
+    assert_eq!(vec![1, 4, 3], xs);
+    assert_eq!(2, x);
+}

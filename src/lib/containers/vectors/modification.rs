@@ -42,3 +42,17 @@ fn demo_consuming_iterator() {
     xs.drain(..2).for_each(|_| {});
     assert_eq!(vec![3, 4], xs);
 }
+
+// to replace a range of elements with another container's
+// content
+#[test]
+fn demo_splice() {
+    let mut xs = vec![1, 2, 3, 4, 5, 6];
+    let ys = vec![10, 20];
+    let ns: Vec<_> = xs.splice(1..4, ys).collect();
+    assert_eq!(vec![1, 10, 20, 5, 6], xs);
+    //                 ^^^^^^ limited by ys (4 is dropped)
+    //                  1  2   3
+    assert_eq!(vec![2, 3, 4], ns);
+    //              ^^^^^^^ corresponding to the range 1..4
+}
