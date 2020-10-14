@@ -32,6 +32,10 @@ fn demo_remove_duplicates() {
     assert_eq!(vec![1, 2, 3, 4], xs);
 }
 
+// P/51
+// drain()
+// can be useful when you have to work through the data and
+// reuse the empty vector again
 #[test]
 fn demo_consuming_iterator() {
     let mut xs = vec![1, 2, 3, 4];
