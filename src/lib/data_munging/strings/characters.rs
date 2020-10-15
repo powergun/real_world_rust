@@ -1,4 +1,4 @@
-// explained in 
+// explained in
 // rust std lib cookbook P/57
 // unicode lets you compose your characters from different
 // unicode scalar values;

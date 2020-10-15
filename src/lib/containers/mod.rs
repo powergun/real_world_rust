@@ -1,6 +1,5 @@
 pub mod array;
 pub mod hashmap;
-pub mod iterator_custom;
 pub mod iterators;
 
 pub mod doubly_linkedlist;
