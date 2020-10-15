@@ -1,7 +1,7 @@
 // source:
 // rust std cookbook P/11
 #[test]
-fn demo_string_concat() {
+fn demo_string_concatenation() {
     // by moving s1 into a new variable
     // Pros:
     // - is memory efficient
@@ -50,7 +50,7 @@ struct Log {
 // source:
 // rust std cookbook P/13
 #[test]
-fn demo_string_concat_by_format_macro() {
+fn demo_string_concatenation_by_format_macro() {
     {
         let s1 = "iddqd";
         let ss = format!("something {}", s1);
@@ -87,5 +87,47 @@ fn demo_string_concat_by_format_macro() {
         };
         let ss = format!("{:?}", l);
         assert_eq!("Log { name: \"A\", length: 1 }", ss);
+    }
+}
+
+// split
+// source
+// rust std lib cookbook P/54
+#[test]
+fn demo_split_at() {
+    let (left, right) = "there is cow".split_at(5);
+    assert_eq!("there", left);
+    assert_eq!(" is cow", right)
+}
+
+#[test]
+fn demo_split_by_separator() {
+    // to use collect() method on an iter, I must specify the
+    // collection's type
+    let substrings: Vec<&str> = "there is a cow".split(" ").collect();
+    assert_eq!(4, substrings.len());
+    assert_eq!(vec!["there", "is", "a", "cow"], substrings);
+
+    // but I can tell the compiler to deduce the element type
+    let ss: Vec<_> = "there is a cow".split(" ").collect();
+    assert_eq!(ss, substrings);
+
+    // P/55
+    // observe the empty tail substring and how to eliminate it
+    // using a special split function
+    {
+        let text = "let a = 1; a += 1;";
+        let ss1: Vec<_> = text.split(";").collect();
+        assert_eq!("", ss1[2]);
+
+        let ss2: Vec<_> = text.split_terminator(";").collect();
+        assert_eq!(2, ss2.len());
+    }
+
+    // special separators
+    {
+        let text = "let a = 1; a += 1;";
+        assert_eq!(3, text.split(char::is_numeric).count());
+        assert_eq!(7, text.split(char::is_whitespace).count());
     }
 }

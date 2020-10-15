@@ -1,3 +1,6 @@
+// source
+// rust std lib cookbook P/54
+
 #[test]
 fn demo_iterate_over_lines_in_string() {
     // how to convert a string to a vector of bytes

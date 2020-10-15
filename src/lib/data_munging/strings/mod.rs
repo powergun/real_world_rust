@@ -1,6 +1,5 @@
 pub mod char_change_case;
 pub mod characters;
-pub mod concat;
 pub mod convertion;
 pub mod creation;
 pub mod iterators;
@@ -9,3 +8,5 @@ pub mod regex;
 pub mod regex_capture_groups;
 pub mod regex_replace;
 pub mod slices;
+pub mod split_concat;
+pub mod substrings;
