@@ -100,6 +100,11 @@ fn demo_split_at() {
     assert_eq!(" is cow", right)
 }
 
+// rust std lib cookbook P/58
+// when a function takes a pattern, it means one of three things:
+// - a character
+// - a string
+// - a predicate that takes one char
 #[test]
 fn demo_split_by_separator() {
     // to use collect() method on an iter, I must specify the

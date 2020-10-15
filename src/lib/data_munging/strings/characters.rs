@@ -1,3 +1,12 @@
+// explained in 
+// rust std lib cookbook P/57
+// unicode lets you compose your characters from different
+// unicode scalar values;
+// with .chars(), you can create an iterator that goes through
+// these scalars
+// if you work with non-latin characters, you might get surprised
+// by this when accessing composing characters
+
 #[test]
 fn demo_string_from() {
     // creation
