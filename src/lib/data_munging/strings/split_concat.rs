@@ -130,4 +130,12 @@ fn demo_split_by_separator() {
         assert_eq!(3, text.split(char::is_numeric).count());
         assert_eq!(7, text.split(char::is_whitespace).count());
     }
+
+    // split by whitespace
+    {
+        let text = r"there
+        is a 
+        cow";
+        assert_eq!(4, text.split_whitespace().count());
+    }
 }

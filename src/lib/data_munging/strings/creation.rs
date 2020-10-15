@@ -17,3 +17,8 @@ fn demo_string_from() {
     let _s3 = String::new();
     assert_eq!(_s2, _s3);
 }
+
+#[test]
+fn demo_string_repeater() {
+    assert_eq!("xxxxxx", String::from("xx").repeat(3));
+}

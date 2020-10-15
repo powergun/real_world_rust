@@ -8,6 +8,6 @@ fn _demo_char_change_case(s: &String) {
 }
 
 #[test]
-fn demo_all() {
+fn demo_string_change_case() {
     _demo_char_change_case(&"there is acow".to_string());
 }

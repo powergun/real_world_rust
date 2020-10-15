@@ -1,29 +1,41 @@
-fn _demo_string_to_u8(sut: String) {
-    let number: u8 = match sut.parse() {
-        Ok(n) => n,
-        Err(_) => 0,
-    };
-    println!("{} parsed as {}", sut, number);
-}
+// mentioned in
+// rust std lib cookbook P/56
 
-fn _demo_i64_from_hexstring(sut: String) {
-    // source
-    // https://stackoverflow.com/questions/32381414/converting-a-hexadecimal-string-to-a-decimal-integer
-    // how to strip 0x prefix
-    let without_prefix = sut.trim_start_matches("0x");
-    let number: i64 = match i64::from_str_radix(&without_prefix, 16) {
-        Ok(n) => n,
-        Err(_) => 0,
+// string offers a basic parse() function
+
+#[test]
+fn demo_parse_to_u8() {
+    let f = |sut: String| -> u8 {
+        let number: u8 = match sut.parse() {
+            Ok(n) => n,
+            Err(_) => 0,
+        };
+        number
     };
-    println!("0x{:X}", number);
+
+    // success
+    assert_eq!(1, f("1".to_string()));
+
+    // fail
+    assert_eq!(0, f("asd".to_string()));
+    assert_eq!(0, f("1F".to_string()));
 }
 
 #[test]
-fn demo_all() {
-    _demo_string_to_u8("1".to_string());
-    _demo_string_to_u8("asd".to_string());
-    _demo_string_to_u8("1F".to_string());
+fn demo_parse_to_i64() {
+    let f = |sut: String| -> i64 {
+        // source
+        // https://stackoverflow.com/questions/32381414/converting-a-hexadecimal-string-to-a-decimal-integer
+        // how to strip 0x prefix
+        let without_prefix = sut.trim_start_matches("0x");
+        let number: i64 = match i64::from_str_radix(&without_prefix, 16) {
+            Ok(n) => n,
+            Err(_) => 0,
+        };
+        number
+    };
 
-    _demo_i64_from_hexstring("badbeef".to_string());
-    _demo_i64_from_hexstring("0xbabe".to_string());
+    // success
+    assert_eq!(0xbadbeef, f("badbeef".to_string()));
+    assert_eq!(0xbabe, f("0xbabe".to_string()));
 }
