@@ -11,7 +11,7 @@
 
 // chaining
 
-// explained in 
+// explained in
 // rust std lib cookbook P/59
 // nearly all collections implement .iter() method
 

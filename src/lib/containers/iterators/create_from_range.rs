@@ -9,7 +9,7 @@ fn demo_iterator_infinite() {
     assert_eq!(vec![5, 10, 15, 20, 25, 30, 35], xs);
 }
 
-// explained in 
+// explained in
 // rust std lib cookbook P/59
 #[test]
 fn demo_create_from_range() {
