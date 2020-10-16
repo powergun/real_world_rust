@@ -4,3 +4,5 @@ pub fn test_chain_iterator() {
     let o: Vec<i32> = (1..4).chain((1..4).map(|x| x * x)).collect();
     assert_eq!(vec![1, 2, 3, 1, 4, 9], o);
 }
+
+// rust std lib cookbook P/62
