@@ -13,7 +13,7 @@ fn demo_string_concatenation() {
         let s1 = "e1m1".to_string();
         let s2 = "iddqd";
         let s12 = s1 + s2;
-        assert_eq!("e1m1iddqd".to_string(), s12);
+        assert_eq!("e1m1iddqd", s12);
 
         // s1 can not be used anymore
         // assert_eq!("e1m1", s1);
@@ -26,8 +26,8 @@ fn demo_string_concatenation() {
         let s1 = "e1m1".to_string();
         let s2 = "idkfa";
         let ss = s1.clone() + s2;
-        assert_eq!("e1m1idkfa".to_string(), ss);
-        assert_eq!("e1m1".to_string(), s1);
+        assert_eq!("e1m1idkfa", ss);
+        assert_eq!("e1m1", s1);
         assert_eq!("idkfa", s2);
     }
 
