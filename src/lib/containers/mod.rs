@@ -8,3 +8,4 @@ pub mod singly_linkedlist;
 pub mod slices;
 pub mod tuples;
 pub mod vectors;
+pub mod hashset;
