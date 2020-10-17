@@ -82,6 +82,8 @@ fn demo_squares_iterator() {
     where
         T: Mul + Copy,
     {
+        // T::Output is just the type that a multiplication will
+        // return, which most of the time is going to be T itself
         vec: Vec<T::Output>,
     };
 
@@ -105,6 +107,7 @@ fn demo_squares_iterator() {
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // this way you automatically implemented a bunch of methods
     // and are flexible enough to change your impl later on
+    // this is an implicit conversion
     impl<T> Deref for SquareVec<T>
     where
         T: Mul + Copy,
