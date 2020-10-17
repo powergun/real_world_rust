@@ -38,7 +38,7 @@ fn demo_overwrite_value() {
     vec!["map", "creature", "prop"].iter().for_each(|x| {
         tb.insert(x.to_string(), x.len());
     });
-    
+
     // insert() returns the old value wrapped in Optional
     // note that the value is not a ref - it has no relation
     // to the hash map
@@ -59,7 +59,7 @@ fn demo_remove_value() {
     vec!["map", "creature", "prop"].iter().for_each(|x| {
         tb.insert(x.to_string(), x.len());
     });
-    
+
     // remove() returns the old value wrapped in Optional
     // note that the value is not a ref - it has no relation
     // to the hash map
