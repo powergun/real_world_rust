@@ -54,3 +54,20 @@ fn demo_string_from() {
         assert_eq!(3, iter.next().unwrap().0);
     }
 }
+
+// rust std lib cookbook P/64
+// how to iterate over the raw bytes and process them as
+// chars using FP
+#[test]
+fn demo_bytes_to_chars() {
+    // ranges are limited; in order to be iterable, the range-
+    // type has to implement Step;
+    // char does not, so you won't be able to use 'A'..'D' as
+    // an iterator.
+    // for this reason, it iterates over the raw bytes instead
+    let alphabet: Vec<_> = (b'A'..b'z' + 1)
+        .map(|b| b as char)
+        .filter(|ch| ch.is_alphabetic())
+        .collect();
+    assert_eq!(52, alphabet.len());
+}

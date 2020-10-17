@@ -8,7 +8,8 @@ pub fn test_inspect_iterator() {
     let o = (1..5)
         .inspect(|x| {
             // debug the element here
-            outer_state = format!("{}{}", outer_state, x)
+            // outer_state = format!("{}{}", outer_state, x)
+            outer_state.push_str(&x.to_string())
         })
         .fold(0, |acc, elem| acc + elem);
     assert_eq!("1234", outer_state);

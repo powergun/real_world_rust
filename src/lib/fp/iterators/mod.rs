@@ -1,9 +1,10 @@
 pub mod combine;
 pub mod enumerate;
+pub mod filter;
 pub mod inspect;
 pub mod map;
-pub mod zip;
 pub mod numeric;
+pub mod repeat;
 pub mod search;
 pub mod take_skip;
-pub mod repeat;
+pub mod zip;

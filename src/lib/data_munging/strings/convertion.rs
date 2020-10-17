@@ -39,3 +39,8 @@ fn demo_parse_to_i64() {
     assert_eq!(0xbadbeef, f("badbeef".to_string()));
     assert_eq!(0xbabe, f("0xbabe".to_string()));
 }
+
+#[test]
+fn demo_num_to_string() {
+    assert_eq!("1", 1.to_string());
+}
