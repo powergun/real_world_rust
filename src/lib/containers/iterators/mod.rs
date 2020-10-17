@@ -3,3 +3,4 @@ pub mod create_from_range;
 pub mod enumerate;
 pub mod iterator_custom;
 pub mod step_next;
+pub mod mutate;
