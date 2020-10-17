@@ -28,3 +28,16 @@ fn demo_fib_by_hashmap() {
         }
     });
 }
+
+// rust std lib cookbook P/71
+// hash map has capacity
+
+#[test]
+fn demo_populate_hm() {
+    let mut tb = HashMap::new();
+    let texts = vec!["map", "creature", "prop"];
+    texts.iter().for_each(|s| {
+        tb.insert(s, s.len());
+    });
+    assert_eq!(3, tb.len());
+}
