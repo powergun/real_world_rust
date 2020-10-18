@@ -9,6 +9,7 @@ use std::io::{self, BufReader, BufWriter, Lines, Write};
 #[test]
 fn demo_read_file_as_a_string() {
     let path = "/tmp/rw_rust_testdata/simple.txt";
+
     let read_file = |path: &str| -> io::Result<String> {
         // opens the file in read-only mode
         let file = File::open(path)?;
@@ -20,6 +21,7 @@ fn demo_read_file_as_a_string() {
         buf_reader.read_to_string(&mut content)?;
         Ok(content)
     };
+    
     let content = read_file(path).expect("fail to read");
     assert!(content.len() > 4);
 }
