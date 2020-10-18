@@ -1,3 +1,5 @@
+// rust std lib cookbook P/91
+
 #[allow(unused_imports)]
 use std::fs::{File, OpenOptions};
 #[allow(unused_imports)]
@@ -5,6 +7,8 @@ use std::io::prelude::*;
 #[allow(unused_imports)]
 use std::io::{self, BufWriter};
 
+// File::create() creates a new file if it doesn't exist,
+// otherwise it truncates the file.
 // overwriting a file is called "truncating"
 #[allow(dead_code)]
 fn write_to_file(path: &str, content: &str) -> io::Result<()> {
@@ -35,6 +39,13 @@ fn demo_append_and_read() {
             .read(true)
             .append(true)
             .open(path)?;
+
+        // rust std lib cookbook P/91
+        // we can read and write on the same file handle - we
+        // pass a reference to the file instead of moving it,
+        // as the buffers would otherwise consume the handle,
+        // making sharing impossible
+        // (see write_to_file, which consumes the file handle)
         let mut buf_writer = BufWriter::new(&file);
         buf_writer.write_all(content.as_bytes())?;
         Ok(())
