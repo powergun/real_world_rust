@@ -1,3 +1,5 @@
+// rust std lib cookbook P/110
+
 extern crate walkdir;
 #[allow(unused_imports)]
 use walkdir::{DirEntry, WalkDir};
@@ -33,9 +35,7 @@ fn demo_walkdir() {
 
     // more creative use of the walkdir iterator:
     // find sub directories
-    let is_dir = |entry: &DirEntry| -> bool {
-        entry.file_type().is_dir()
-    };
+    let is_dir = |entry: &DirEntry| -> bool { entry.file_type().is_dir() };
     WalkDir::new("..")
         .into_iter()
         .filter_entry(|entry| is_dir(entry)) // dirs only
@@ -49,11 +49,9 @@ fn demo_walkdir() {
     WalkDir::new("..")
         .into_iter()
         .filter_map(Result::ok)
-        .filter_map(|entry| {
-            match entry.metadata() {
-                Ok(meta) => Some(meta),
-                _ => None,
-            }
+        .filter_map(|entry| match entry.metadata() {
+            Ok(meta) => Some(meta),
+            _ => None,
         })
         .any(|meta| meta.permissions().readonly());
 
@@ -61,11 +59,9 @@ fn demo_walkdir() {
     let sz = WalkDir::new(".")
         .into_iter()
         .filter_map(Result::ok)
-        .filter_map(|entry| {
-            match entry.metadata() {
-                Ok(meta) => Some(meta),
-                _ => None,
-            }
+        .filter_map(|entry| match entry.metadata() {
+            Ok(meta) => Some(meta),
+            _ => None,
         })
         .filter(|meta| meta.is_file())
         .fold(0, |acc, m| acc + m.len());
