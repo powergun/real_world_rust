@@ -6,13 +6,27 @@ use walkdir::{DirEntry, WalkDir};
 
 #[test]
 fn demo_walkdir() {
+    // when will the Result be a failure:
+    // - os prohibit you from reading
+    // - a symbolic link (without enabling follow_links(true))
+    // - or you point back to a parent dir, leading to cyclic loop
     for entry in WalkDir::new(".") {
         if let Ok(_entry) = entry {
+            // Path is a struct that offers functionality
+            // extension, parent etc.
+            // recall boost's file path type
+            // display() will produce a string
+
             // println!("{}", _entry.path().display());
         }
     }
 
-    // use walkdir iterator
+    // use walkdir as an iterator, which has special methods
+    // no other iterators have;
+    // filter_entry() is an optimization over normal FP filter
+    // in that it gets called during the traversal;
+    // when its predicate returns false on a directory, the
+    // walker will not go into that directory at all
     let is_hidden = |entry: &DirEntry| -> bool {
         entry
             .file_name()
