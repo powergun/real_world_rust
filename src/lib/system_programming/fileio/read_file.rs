@@ -1,4 +1,3 @@
-
 #[allow(unused_imports)]
 use std::fs::{File, OpenOptions};
 #[allow(unused_imports)]
@@ -21,7 +20,7 @@ fn demo_read_file_as_a_string() {
         buf_reader.read_to_string(&mut content)?;
         Ok(content)
     };
-    
+
     let content = read_file(path).expect("fail to read");
     assert!(content.len() > 4);
 }

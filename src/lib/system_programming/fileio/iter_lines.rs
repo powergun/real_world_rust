@@ -1,7 +1,6 @@
-
 // rust std lib cookbook P/91
 
-use std::fs::{File};
+use std::fs::File;
 #[allow(unused_imports)]
 use std::io::prelude::*;
 #[allow(unused_imports)]
@@ -12,7 +11,6 @@ type FileIter = Lines<BufReader<File>>;
 
 #[test]
 fn demo_read_and_iter_lines() {
-    
     // P/91
     // reading file line-by-line would inefficient when dealing
     // with a large file, which is why a BufReader actually
@@ -26,7 +24,6 @@ fn demo_read_and_iter_lines() {
         Ok(buf_reader.lines())
     };
 
-    let iter = iter_lines("/tmp/rw_rust_testdata/simple.txt")
-        .expect("fail to read");
+    let iter = iter_lines("/tmp/rw_rust_testdata/simple.txt").expect("fail to read");
     assert!(iter.count() > 1);
 }

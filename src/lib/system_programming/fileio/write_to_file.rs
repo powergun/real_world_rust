@@ -35,10 +35,7 @@ there is a cow
 #[test]
 fn demo_append_and_read() {
     let append_to = |path: &str, content: &str| -> io::Result<()> {
-        let file = OpenOptions::new()
-            .read(true)
-            .append(true)
-            .open(path)?;
+        let file = OpenOptions::new().read(true).append(true).open(path)?;
 
         // rust std lib cookbook P/91
         // we can read and write on the same file handle - we
