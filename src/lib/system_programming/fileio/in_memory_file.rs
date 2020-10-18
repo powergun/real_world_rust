@@ -46,7 +46,7 @@ fn demo_create_buffer_by_cursor() {
     use std::io::Cursor;
     // brings read_u8() method to the reader
     // see also read_u32 and write_xx
-    use byteorder::{WriteBytesExt, ReadBytesExt};
+    use byteorder::{ReadBytesExt, WriteBytesExt};
 
     let mut raw_bytes = vec![1, 2, 3, 4, 5, 6];
 
