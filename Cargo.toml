@@ -14,6 +14,7 @@ regex = "1"
 clap = "3.0.0-beta.2"
 byteorder = "1"
 walkdir = "2"
+glob = "0"
 
 [[bin]]
 name = "cat"

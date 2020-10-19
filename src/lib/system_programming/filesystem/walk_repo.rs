@@ -1,14 +1,12 @@
 extern crate walkdir;
-use walkdir::{DirEntry, WalkDir};
 use std::path::Path;
+use walkdir::{DirEntry, WalkDir};
 
 fn is_ignored(entry: &DirEntry) -> bool {
     entry
         .file_name()
         .to_str()
-        .map(|s| {
-            s.starts_with(".") || s == "target" || s == "testdata"
-        })
+        .map(|s| s.starts_with(".") || s == "target" || s == "testdata")
         .unwrap_or(false)
 }
 
@@ -25,7 +23,9 @@ fn is_source_tree(entry: &DirEntry) -> bool {
 }
 
 pub fn do_walk(entry_point: &str) {
-    let pth = Path::new(entry_point).canonicalize().expect("fail to canonicalize()");
+    let pth = Path::new(entry_point)
+        .canonicalize()
+        .expect("fail to canonicalize()");
     WalkDir::new(pth)
         .into_iter()
         .filter_entry(|entry| !is_ignored(entry))
