@@ -11,6 +11,8 @@ def main(src, dest):
         shutil.rmtree(dest, True)
     elif os.path.exists(dest):
         os.remove(dest)
+    elif os.path.islink(dest):
+        os.remove(dest)
     os.symlink(src, dest)
     print(dest)
 
