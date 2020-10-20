@@ -2,9 +2,9 @@
 extern crate serde_json;
 
 #[allow(unused_imports)]
-use std::io::{self, BufRead};
-#[allow(unused_imports)]
 use std::collections::HashMap;
+#[allow(unused_imports)]
+use std::io::{self, BufRead};
 
 #[test]
 fn demo_dump_hash_map_to_json() {
@@ -20,6 +20,6 @@ fn demo_dump_hash_map_to_json() {
 
     // NOTE, the order of the keys is not guaranteed!
     // (I was testing with two entries and the assertion below
-    // would fail) 
+    // would fail)
     assert_eq!(expected_blob, blob);
 }

@@ -1,5 +1,5 @@
 #[allow(unused_imports)]
-use std::fs::{File};
+use std::fs::File;
 #[allow(unused_imports)]
 use std::io::{self, BufReader};
 
@@ -15,7 +15,8 @@ fn demo_read_csv() {
     // let buf_reader = BufReader::new(file);
     // let mut rdr = csv::Reader::from_reader(buf_reader);
 
-    let mut rdr = csv::Reader::from_path("/tmp/rw_rust_testdata/simple.csv").expect("fail to open file");
+    let mut rdr =
+        csv::Reader::from_path("/tmp/rw_rust_testdata/simple.csv").expect("fail to open file");
 
     // Loop over each record.
     for result in rdr.records() {
