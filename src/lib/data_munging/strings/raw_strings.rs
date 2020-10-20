@@ -3,6 +3,9 @@
 
 #[test]
 fn demo_raw_string() {
-    let s = r"c:\system";
-    assert_eq!("c:\\system", s);
+    // read:
+    // https://rahul-thakoor.github.io/rust-raw-string-literals/
+    // like c++, r#"..."#, `#` is the delimiter
+    let s = r#"c:\sys"tem"#;
+    assert_eq!("c:\\sys\"tem", s);
 }

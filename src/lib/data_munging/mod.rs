@@ -3,3 +3,4 @@ pub mod std_io;
 pub mod strings;
 pub mod structs;
 pub mod csv;
+pub mod json;
