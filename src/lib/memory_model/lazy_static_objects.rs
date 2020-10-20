@@ -11,14 +11,12 @@
 // it is impossible to build a hashmap during compile time
 // another catch with static var is that, because they have
 // a global life time, the borrow checker can not make sure
-// that their access is thread-safe; 
+// that their access is thread-safe;
 // as a consequence, any access on a static mut var will always
-// be unsafe.  
+// be unsafe.
 
 // you can view a `normal static rust` as a `static constexpr c++`
 // and a `lazy_static rust` as a `static c++ local`
 
 #[test]
-fn demo_() {
-
-}
+fn demo_() {}

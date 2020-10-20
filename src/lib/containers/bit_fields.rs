@@ -21,7 +21,7 @@ fn demo_bitflags_as_struct() {
                       | Self::EXTRA_MAG.bits;
         }
     }
-    
+
     impl AddOns {
         // implementing a "clear" method
         fn clear(&mut self) -> &mut Self {
