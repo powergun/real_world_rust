@@ -107,6 +107,13 @@ fn demo_convert_ref_to_double_vec_to_ref_to_vec() {
             DoubleVec(vec)
         }
     }
+    
+    // P/162
+    // as_ref() is nearly identical to into() but instead of
+    // moving itself into another type, it takes a reference
+    // to itself and returns a reference to another type;
+    
+    // in a way, it translates references
 
     // allow conversion from a &DoubleVec<T> to a &Vec<T>
     impl<T> AsRef<Vec<T>> for DoubleVec<T> {
