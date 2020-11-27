@@ -3,6 +3,8 @@
 
 // string offers a basic parse() function
 
+/////////////// from string ////////////////////////////////////
+///
 #[test]
 fn demo_parse_to_u8() {
     let f = |sut: String| -> u8 {
@@ -39,6 +41,8 @@ fn demo_parse_to_i64() {
     assert_eq!(0xbadbeef, f("badbeef".to_string()));
     assert_eq!(0xbabe, f("0xbabe".to_string()));
 }
+
+//////////////// to string /////////////////////////////////////
 
 #[test]
 fn demo_num_to_string() {
