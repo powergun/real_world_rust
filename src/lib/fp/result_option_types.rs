@@ -33,7 +33,7 @@ fn use_result_type_from_parse() {
     // parse with turbo-fish
     let x: i32 = match "3".parse::<i32>() {
         Ok(x) => x,
-        
+
         // Err wraps an err description
         Err(_) => -1,
     };
@@ -49,9 +49,7 @@ fn use_result_type_from_parse() {
 #[test]
 fn return_result_type() {
     fn f() -> Result<i32, i32> {
-        let x = args()
-                .enumerate()
-                .any(|(idx, _argument)| {idx > 10});
+        let x = args().enumerate().any(|(idx, _argument)| idx > 10);
         if x {
             Ok(1)
         } else {

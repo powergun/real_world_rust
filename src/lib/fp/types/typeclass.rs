@@ -1,5 +1,7 @@
 // FP in rust L594
 
+// see also traits.rs
+
 // data trait (OOP)
 pub trait DataTrait {
     // ctor

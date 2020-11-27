@@ -19,3 +19,21 @@ cow
     assert_eq!(Some(""), lines.next());
     assert_eq!(Some("there is a cow,"), lines.next());
 }
+
+#[test]
+fn demo_take_1st_char_use_iter() {
+    // next() returns an option value
+    let xs: Vec<String> = vec!["e1m1".to_string(), "".to_string(), "ii".to_string()];
+    let n = xs
+        .iter()
+        .filter(|x| {
+            if let Some(_first_char) = x.chars().next() {
+                false
+            } else {
+                true
+            }
+        })
+        .count();
+    // one string is empty, hence does not have the 1st char
+    assert_eq!(n, 1);
+}
