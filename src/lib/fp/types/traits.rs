@@ -11,7 +11,7 @@ impl Add for P {
     // see: https://doc.rust-lang.org/beta/std/ops/trait.Add.html
     type Output = Self;
 
-    fn add(self, other: P) -> Self {
+    fn add(self, other: P) -> Self::Output {
         P {
             x: self.x + other.x,
             y: self.y + other.y,

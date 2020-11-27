@@ -19,6 +19,13 @@ csv = "1"
 serde_json = "1"
 bitflags = "1"
 
+# //////////////////////////////////////////////////////////////
+# How to include "local libraries" (crates or projects in
+# the filesystem)
+# card_deck = { path = "../some/path/" }
+# arc_map = { path = " ../another/path/" }
+# //////////////////////////////////////////////////////////////
+
 [[bin]]
 name = "cat"
 path = "src/bin/cat.rs"
