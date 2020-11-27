@@ -14,7 +14,7 @@ fn demo_convert_vec_to_double_vec() {
     // a type from another
     impl<T> From<Vec<T>> for DoubleVec<T>
     where
-    T: MulAssign<i32>,  // T implements *= operator
+        T: MulAssign<i32>, // T implements *= operator
     {
         fn from(mut vec: Vec<T>) -> Self {
             // for elem in &mut vec {
@@ -51,7 +51,7 @@ fn demo_convert_slice_to_double_vec() {
 
     impl<T> From<Vec<T>> for DoubleVec<T>
     where
-    T: MulAssign<i32>,
+        T: MulAssign<i32>,
     {
         fn from(mut vec: Vec<T>) -> Self {
             vec.iter_mut().for_each(|elem| *elem *= 2);
@@ -62,13 +62,13 @@ fn demo_convert_slice_to_double_vec() {
     // allowing conversion from a slice of Ts
     impl<'a, T> From<&'a [T]> for DoubleVec<T>
     where
-    T: MulAssign<i32> + Clone,
+        T: MulAssign<i32> + Clone,
     {
         fn from(slice: &[T]) -> Self {
             // Vec<T: MulAssign<i32>> automatically implements
             // Into<DoubleVec<T>>
 
-            // .to_vec() converts a slice to a vector 
+            // .to_vec() converts a slice to a vector
             // it requires T to be copy-able, hence requiring
             // the Clone trait
 
@@ -100,19 +100,19 @@ fn demo_convert_ref_to_double_vec_to_ref_to_vec() {
 
     impl<T> From<Vec<T>> for DoubleVec<T>
     where
-    T: MulAssign<i32>,
+        T: MulAssign<i32>,
     {
         fn from(mut vec: Vec<T>) -> Self {
             vec.iter_mut().for_each(|elem| *elem *= 2);
             DoubleVec(vec)
         }
     }
-    
+
     // P/162
     // as_ref() is nearly identical to into() but instead of
     // moving itself into another type, it takes a reference
     // to itself and returns a reference to another type;
-    
+
     // in a way, it translates references
 
     // allow conversion from a &DoubleVec<T> to a &Vec<T>
