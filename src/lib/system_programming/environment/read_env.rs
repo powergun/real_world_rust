@@ -8,6 +8,8 @@
 
 #[allow(unused_imports)]
 use std::env;
+#[allow(unused_imports)]
+use std::env::{set_var, var};
 
 #[test]
 fn demo_iterate_over_env_vars() {
@@ -36,4 +38,11 @@ fn demo_safe_read_one_env_var() {
 
     // use unwrap_or
     assert_eq!("XX", env::var("asdasd").unwrap_or("XX".to_string()));
+}
+
+#[test]
+fn set_env_var() {
+    set_var("ROAD", "e1m1");
+    let v = var("ROAD").unwrap_or("....".to_string());
+    assert_eq!(v.len(), 4);
 }
