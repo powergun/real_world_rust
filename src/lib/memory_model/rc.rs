@@ -1,4 +1,10 @@
 // C++ std::shared_ptr<>
+// Box<T>: single ownership
+// Rc<T>: multiple ownership
+// RefCell<T>: internal mutability
+// Rc<RefCell<T>>: multiple ownership + internal mutability
+// Arc<T>: multiple ownership and thread-safe
+
 #[allow(unused_imports)]
 use std::cell::RefCell;
 use std::rc::Rc;
