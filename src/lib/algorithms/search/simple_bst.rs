@@ -56,25 +56,25 @@ where
     }
 
     #[allow(dead_code)]
-    fn bfs(&self, f: fn(&T) -> ()) -> () {
+    fn inorder_f(&self, f: fn(&T) -> ()) -> () {
         match self {
             Self::Empty => (),
             Self::Tree(v, l, r) => {
-                l.bfs(f);
+                l.inorder_f(f);
                 f(v);
-                r.bfs(f);
+                r.inorder_f(f);
             }
         }
     }
 
     #[allow(dead_code)]
-    fn bfs_vec(&self) -> Vec<T> {
+    fn inorder_vec(&self) -> Vec<T> {
         match self {
             Self::Empty => vec![],
             Self::Tree(v, l, r) => {
-                let mut lv = l.bfs_vec();
+                let mut lv = l.inorder_vec();
                 lv.push(v.clone());
-                lv.extend(r.bfs_vec());
+                lv.extend(r.inorder_vec());
                 lv
             }
         }
@@ -86,18 +86,18 @@ fn test_populate_bst() {
     {
         let root: BST<i32> = BST::singleton(10);
         let m = root.insert(12).insert(3).insert(5);
-        m.bfs(|x: &i32| print!("{} ", x));
+        m.inorder_f(|x: &i32| print!("{} ", x));
 
-        let v = m.bfs_vec();
+        let v = m.inorder_vec();
         assert_eq!(v, vec![3, 5, 10, 12]);
     }
     println!("");
     {
         let mut root: BST<i32> = BST::singleton(10);
         vec![5, 3, 12].into_iter().for_each(|x| root.m_insert(x));
-        root.bfs(|x: &i32| print!("{} ", x));
+        root.inorder_f(|x: &i32| print!("{} ", x));
 
-        let v = root.bfs_vec();
+        let v = root.inorder_vec();
         assert_eq!(v, vec![3, 5, 10, 12]);
     }
     println!("");
