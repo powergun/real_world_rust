@@ -3,7 +3,8 @@
 // Rc<T>: multiple ownership
 // RefCell<T>: internal mutability
 // Rc<RefCell<T>>: multiple ownership + internal mutability
-// Arc<T>: multiple ownership and thread-safe
+// Arc<T>: (atomic rc) multiple ownership and thread-safe
+//
 
 #[allow(unused_imports)]
 use std::cell::RefCell;
@@ -119,3 +120,6 @@ fn test_cons_list() {
     l2.push(4);
     assert_eq!(l2.head().unwrap(), &2);
 }
+
+///////////////// binary tree modeled using RC /////////////////
+// see algorithm/search/simple_bst.rs
