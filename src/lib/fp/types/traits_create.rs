@@ -13,7 +13,12 @@ trait ToUSD {
 
     // convert() bridges unrelated types;
     // any two types that impl FromUSD & ToUSD can be converted
-    // to and from each other
+    // to and from each other;
+    // this can be extended to a "broker/exchange" pattern,
+    // where a broker implements from_<T> and to_<T> for
+    // any T of interests; it may define some internal type
+    // that acts as the common data holder but each T does not
+    // need to know this implementation detail
     fn convert<T: FromUSD>(&self) -> T {
         T::from_usd(self.to_usd())
     }

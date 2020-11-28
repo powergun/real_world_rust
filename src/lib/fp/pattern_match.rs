@@ -12,3 +12,9 @@ fn single_case_multiple_values() {
     }
     assert_eq!(f(), Err(-1));
 }
+
+// how to pattern match enum (used as a sum type)
+// https://doc.rust-lang.org/book/ch06-02-match.html
+// see
+// memory management section, boxed.rs for an implementation of
+// linked list that uses the boxed type
