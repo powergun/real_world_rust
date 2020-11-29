@@ -1,7 +1,7 @@
 #[allow(unused_imports)]
 use std::fs::{File, OpenOptions};
 #[allow(unused_imports)]
-use std::io::prelude::*;
+use std::io::prelude::*; // importing the Read trait
 #[allow(unused_imports)]
 use std::io::{self, BufReader, BufWriter, Lines, Write};
 
