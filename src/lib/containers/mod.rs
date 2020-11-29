@@ -1,5 +1,6 @@
 pub mod array;
 pub mod bit_fields;
+pub mod btreemap;
 pub mod doubly_linkedlist;
 pub mod hashmap;
 pub mod hashset;
