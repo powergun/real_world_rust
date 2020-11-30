@@ -54,3 +54,15 @@ fn demo_mut_append() {
     assert_eq!(0, ys.len());
     assert_eq!(vec![1, 2, 3, 4], xs);
 }
+
+#[test]
+fn demo_split_at_mut() {
+    // yields two mutable slices
+    let mut xs = vec![1, 2, 3, 4];
+    let pivot = xs.len() / 2;
+    // will panic if pivot is out of bound
+    let (left, right) = xs.split_at_mut(pivot);
+    left[0] = 999;
+    right[0] = 999;
+    assert_eq!(xs, vec![999, 2, 999, 4]);
+}
