@@ -100,26 +100,26 @@ fn demo_add_new_user() {
 
     // when everything works;
     // but it will modify the db file
-    // {
-    //     let ub = UserBase {
-    //         fname: "/tmp/rw_rust_testdata/users.db".to_string(),
-    //     };
-    //     let n = format!("arch_{}", get_current_micro());
-    //     let o = ub.add_user(
-    //         &n as &str, 
-    //         "episode 8"
-    //     );
-    //     assert_eq!(o.is_ok(), true);
-    // }
+    {
+        let ub = UserBase {
+            fname: "/tmp/rw_rust_testdata/users.db".to_string(),
+        };
+        let n = format!("arch_{}", get_current_micro());
+        let o = ub.add_user(
+            &n as &str, 
+            "episode 8"
+        );
+        assert_eq!(o.is_ok(), true);
+    }
 
     // make a payment
     // will modify the db file
-    // {
-    //     let ub = UserBase {
-    //         fname: "/tmp/rw_rust_testdata/users.db".to_string(),
-    //     };
-    //     let o = ub.pay("matt", "dave", 320);
-    //     assert_eq!(o.is_ok(), true);
-    //     println!("{:?}", o);
-    // }
+    {
+        let ub = UserBase {
+            fname: "/tmp/rw_rust_testdata/users.db".to_string(),
+        };
+        let o = ub.pay("matt", "dave", 320);
+        assert_eq!(o.is_ok(), true);
+        println!("{:?}", o);
+    }
 }
