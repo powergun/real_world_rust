@@ -17,7 +17,7 @@ impl User {
     fn new(uname: String, pwd: &str) -> Result<Self, BcryptError> {
         Ok(User {
             uname,
-            pass_hash: hash(pwd, 10)?,
+            pass_hash: hash(pwd, 7)?,
         })
     }
 
