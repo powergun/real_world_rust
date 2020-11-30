@@ -7,6 +7,13 @@ use std::time::Duration;
 
 #[test]
 fn demo_parallel_iterator_map() {
+    // rayon under the hood uses join(A, B)
+    // if A, B can run in parallel, do so; otherwise put B
+    // in a queue and further calling to join(A, B) will keep
+    // enqueuing tasks or stealing tasks from the queue
+    
+    // is it some form of work stealing?
+
     let xs = (0..10).collect::<Vec<i32>>();
     let mut ys = xs // change from into_par() to par_iter()
         .par_iter()
