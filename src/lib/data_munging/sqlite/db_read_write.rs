@@ -1,8 +1,16 @@
 // this example uses the users.db sqlite3 database file in the
-// testdata/ directory; run the init script to recreate this
-// db file (with some preloaded rows)
+// testdata/ directory; run the init script `init_sqlite3_users_db.sh*`
+// to recreate this db file (with some preloaded rows)
+
+
 // it shows how to use a good password enc library to store the
 // hashed user password (with salt)
+
+// Note how this example resembles the daml/haskell idiom:
+// - use some kind of IO monad to talk to the real world
+// - use custom sum type to represent errors and exceptional conditions
+// - the ? notation can be loosely considered monad bind 
+// 
 
 #[allow(unused_imports)]
 use bcrypt::{hash, verify, BcryptError};
@@ -16,6 +24,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 enum UBaseErr {
     DbErr(SqErr),
     HashError(BcryptError),
+    UserNotFound,
 }
 
 // to implicitly convert the internal error types to my own
@@ -64,6 +73,25 @@ impl UserBase {
         Ok(())
     }
     
+    fn validate_user(&self, u_name: &str, p_word: &str) -> Result<bool, UBaseErr> {
+        let conn = sqlite::open(&self.fname)?;
+        let mut st = conn.prepare(r#"
+            select p_word from users
+                where u_name = ?
+            ;
+        "#)?;
+        st.bind(1, u_name)?;
+        match st.next() {
+            // 0 is the element index; 
+            // use turbo fish to set the resulting type;
+            Ok(sqlite::State::Row) => {
+                let p_hash = st.read::<String>(0)?;
+                let verified = bcrypt::verify(p_word, &p_hash).unwrap_or(false);
+                Ok(verified)
+            },
+            _ => Err(UBaseErr::UserNotFound),
+        }
+    }
 }
 
 #[allow(dead_code)]
@@ -76,7 +104,7 @@ fn get_current_micro() -> u128 {
 }
 
 #[test]
-fn demo_add_new_user() {
+fn demo_add_new_user_and_payment() {
     // db file does not exist (expect SqErr implicitly converted
     // to DbErr of own type)
     {
@@ -120,6 +148,16 @@ fn demo_add_new_user() {
         };
         let o = ub.pay("matt", "dave", 320);
         assert_eq!(o.is_ok(), true);
-        println!("{:?}", o);
+    }
+}
+
+#[test]
+fn demo_retrieve_data() {
+    {
+        let ub = UserBase {
+            fname: "/tmp/rw_rust_testdata/users.db".to_string(),
+        };
+        let o = ub.validate_user("dave", "dave_pw");
+        assert!(o.is_ok());
     }
 }
