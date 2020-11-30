@@ -73,6 +73,11 @@ outside the project)
 `rlib` is the one I need (see `[lib]` section); I can run
 `cargo build --release` to create the release (opt) binary;
 
+### Generate Documentation
+
+watch the `comments` section in Rust lang: the complete 
+beginner's guide;
+
 ### References
 
 <https://github.com/digikata/rust-lib-and-bin>

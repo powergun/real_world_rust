@@ -10,3 +10,10 @@ fn demo_debug() {
 fn demo_decimal_precision() {
     // {:.*}, 2, 3.1235 -> 3.12
 }
+
+#[test]
+fn demo_numeric_formatter() {
+    // {:b} binary
+    // {:x} hex
+    // {:o} octal
+}
