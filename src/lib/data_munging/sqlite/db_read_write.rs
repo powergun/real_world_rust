@@ -2,15 +2,14 @@
 // testdata/ directory; run the init script `init_sqlite3_users_db.sh*`
 // to recreate this db file (with some preloaded rows)
 
-
 // it shows how to use a good password enc library to store the
 // hashed user password (with salt)
 
 // Note how this example resembles the daml/haskell idiom:
 // - use some kind of IO monad to talk to the real world
 // - use custom sum type to represent errors and exceptional conditions
-// - the ? notation can be loosely considered monad bind 
-// 
+// - the ? notation can be loosely considered monad bind
+//
 
 #[allow(unused_imports)]
 use bcrypt::{hash, verify, BcryptError};
@@ -59,36 +58,40 @@ impl UserBase {
 
     fn pay(&self, u_from: &str, u_to: &str, amount: i64) -> Result<(), UBaseErr> {
         let conn = sqlite::open(&self.fname)?;
-        let mut st = conn.prepare(r#"
+        let mut st = conn.prepare(
+            r#"
             insert into transactions
                 (u_from, u_to, t_date, t_amount)
             values
                 ( ? , ? , datetime("now") , ? )
             ;
-        "#)?;
+        "#,
+        )?;
         st.bind(1, u_from)?;
         st.bind(2, u_to)?;
         st.bind(3, amount)?;
         st.next()?;
         Ok(())
     }
-    
+
     fn validate_user(&self, u_name: &str, p_word: &str) -> Result<bool, UBaseErr> {
         let conn = sqlite::open(&self.fname)?;
-        let mut st = conn.prepare(r#"
+        let mut st = conn.prepare(
+            r#"
             select p_word from users
                 where u_name = ?
             ;
-        "#)?;
+        "#,
+        )?;
         st.bind(1, u_name)?;
         match st.next() {
-            // 0 is the element index; 
+            // 0 is the element index;
             // use turbo fish to set the resulting type;
             Ok(sqlite::State::Row) => {
                 let p_hash = st.read::<String>(0)?;
                 let verified = bcrypt::verify(p_word, &p_hash).unwrap_or(false);
                 Ok(verified)
-            },
+            }
             _ => Err(UBaseErr::UserNotFound),
         }
     }
@@ -133,10 +136,7 @@ fn demo_add_new_user_and_payment() {
             fname: "/tmp/rw_rust_testdata/users.db".to_string(),
         };
         let n = format!("arch_{}", get_current_micro());
-        let o = ub.add_user(
-            &n as &str, 
-            "episode 8"
-        );
+        let o = ub.add_user(&n as &str, "episode 8");
         assert_eq!(o.is_ok(), true);
     }
 
