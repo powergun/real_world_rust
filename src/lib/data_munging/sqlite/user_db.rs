@@ -1,6 +1,8 @@
 // this example uses the users.db sqlite3 database file in the
 // testdata/ directory; run the init script to recreate this
 // db file (with some preloaded rows)
+// it shows how to use a good password enc library to store the
+// hashed user password (with salt)
 
 #[allow(unused_imports)]
 use bcrypt::{hash, verify, BcryptError};
@@ -45,6 +47,23 @@ impl UserBase {
         st.next()?;
         Ok(())
     }
+
+    fn pay(&self, u_from: &str, u_to: &str, amount: i64) -> Result<(), UBaseErr> {
+        let conn = sqlite::open(&self.fname)?;
+        let mut st = conn.prepare(r#"
+            insert into transactions
+                (u_from, u_to, t_date, t_amount)
+            values
+                ( ? , ? , datetime("now") , ? )
+            ;
+        "#)?;
+        st.bind(1, u_from)?;
+        st.bind(2, u_to)?;
+        st.bind(3, amount)?;
+        st.next()?;
+        Ok(())
+    }
+    
 }
 
 #[allow(dead_code)]
@@ -91,5 +110,16 @@ fn demo_add_new_user() {
     //         "episode 8"
     //     );
     //     assert_eq!(o.is_ok(), true);
+    // }
+
+    // make a payment
+    // will modify the db file
+    // {
+    //     let ub = UserBase {
+    //         fname: "/tmp/rw_rust_testdata/users.db".to_string(),
+    //     };
+    //     let o = ub.pay("matt", "dave", 320);
+    //     assert_eq!(o.is_ok(), true);
+    //     println!("{:?}", o);
     // }
 }
