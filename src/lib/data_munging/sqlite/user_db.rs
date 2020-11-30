@@ -6,6 +6,8 @@
 use bcrypt::{hash, verify, BcryptError};
 #[allow(unused_imports)]
 use sqlite::Error as SqErr;
+#[allow(unused_imports)]
+use std::time::{SystemTime, UNIX_EPOCH};
 
 // an error type to aggregate internal (3rd party) error types
 #[derive(Debug)]
@@ -45,6 +47,15 @@ impl UserBase {
     }
 }
 
+#[allow(dead_code)]
+fn get_current_micro() -> u128 {
+    let start = SystemTime::now();
+    let since_the_epoch = start
+        .duration_since(UNIX_EPOCH)
+        .expect("Time went backwards");
+    since_the_epoch.as_micros()
+}
+
 #[test]
 fn demo_add_new_user() {
     // db file does not exist (expect SqErr implicitly converted
@@ -68,5 +79,17 @@ fn demo_add_new_user() {
         }
     }
 
-    // when everything works
+    // when everything works;
+    // but it will modify the db file
+    // {
+    //     let ub = UserBase {
+    //         fname: "/tmp/rw_rust_testdata/users.db".to_string(),
+    //     };
+    //     let n = format!("arch_{}", get_current_micro());
+    //     let o = ub.add_user(
+    //         &n as &str, 
+    //         "episode 8"
+    //     );
+    //     assert_eq!(o.is_ok(), true);
+    // }
 }
