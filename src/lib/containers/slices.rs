@@ -1,3 +1,8 @@
+// is a pointer to a block of memory
+// (block of memory is commonly represented by array or vector)
+
+// mutable slices allow use to change values
+
 // allow passing around views into memory without copying values or
 // passing raw pointers
 //
@@ -27,4 +32,32 @@ pub fn demo_string_slice() {
 fn demo_all() {
     demo_vector_slice();
     demo_string_slice();
+}
+
+#[test]
+fn demo_array_slice() {
+    let mut xs = [0, 1, 2, 3, 4, 5];
+    //                     0  1  2 indices of the slice
+    let sxs = &xs[3..5];
+    assert_eq!(sxs[0], 3);
+    
+    // slice size is determined at runtime
+    
+    {
+        // out of bound
+        // be careful, the code can be compiled but will crash at
+        // runtime
+        // let _sxs = &xs[7..10];
+        // println!("{:?}", _sxs);
+    }
+
+    // update array element via slice
+    
+    {
+        let sxs = &mut xs[1..3];
+        // sxs is of type `&mut [i32]`
+        sxs[0] = 999;
+        // modification is reflected on the source array
+        assert_eq!(xs, [0, 999, 2, 3, 4, 5]);
+    }
 }

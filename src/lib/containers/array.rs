@@ -22,6 +22,8 @@ fn demo_all() {
     let xs: [i32; 5] = [1, 2, 3, 4, 5];
 
     // All elements can be initialized to the same value
+    // the default value must be a const or literal (like in
+    // C++); it must be known to the compiler
     let ys: [i32; 500] = [0; 500];
 
     // Indexing starts at 0
@@ -48,4 +50,20 @@ fn demo_all() {
     let items: [Item; 2] = [Item { value: 1 }, Item { value: 2 }];
     implicit_copy_from_slice(&items[0..1]);
     println!("{:?}", items[0]) // unaffected by the modification above
+}
+
+#[test]
+fn safe_modify_elements() {
+    let mut _xs = [0; 5];
+
+    // this causes a compile error!
+    // _xs[7] = 1;
+}
+
+#[test]
+fn array_iterator() {
+    let xs = [0; 5];
+    // can not collect to another array
+    let ys = xs.iter().map(|x| {x + 1}).collect::<Vec<i32>>();
+    assert_eq!(ys.len(), 5);
 }
