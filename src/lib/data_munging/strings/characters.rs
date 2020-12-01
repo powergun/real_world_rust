@@ -8,6 +8,12 @@
 // by this when accessing composing characters
 
 #[test]
+fn demo_emoji() {
+    let c = '\u{1f601}'; // laugh
+    println!("{}", c);
+}
+
+#[test]
 fn demo_string_from() {
     // creation
     // each char is a unicode scalar value

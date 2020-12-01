@@ -10,6 +10,7 @@ fn demo_string_from() {
     let mut s1 = String::from("map");
     s1.push(' ');
     s1.push('1');
+    // taking a string slice
     s1.push_str(" e1m1");
     assert_eq!("map 1 e1m1", s1);
 
