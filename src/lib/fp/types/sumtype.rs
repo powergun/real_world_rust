@@ -1,5 +1,6 @@
 // FP in rust L586
 
+// enum type in rust can take parameters and generic type params
 pub enum BTree<T> {
     Node {
         val: T,

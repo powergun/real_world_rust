@@ -18,3 +18,49 @@ fn single_case_multiple_values() {
 // see
 // memory management section, boxed.rs for an implementation of
 // linked list that uses the boxed type
+
+#[test]
+fn demo_match_range() {
+    fn f(x: i32) -> String {
+        match x {
+            1..=99 => String::from("i"),
+            144 => String::from("s"),
+            188 => String::from("S"),
+            _ => String::from(""),
+        }
+    }
+
+    assert_eq!(f(1), "i");
+    assert_eq!(f(100), "");
+}
+
+#[test]
+fn demo_match_with_if_statement() {
+    // this is probably borrowed from Scala
+
+    fn f(x: i32) -> (char, i32) {
+        match x {
+            // val is essentially x
+            val if (x % 3 == 0) => ('k', val),
+            _ => ('\0', 0),
+        }
+    }
+    assert_eq!(f(27).0, 'k');
+}
+
+#[test]
+fn demo_match_tuple() {
+
+    fn f(tpl: (i32, i32)) -> i32 {
+        match tpl {
+            (1, _) => 1_000_000,
+            (2..=100, _) => 10,
+            // note that if-statement must be placed outside
+            // the tuple
+            (_, x) if (x % 3 == 0) => x,
+            _ => 0,
+        }
+    }
+
+    assert_eq!(f((-1, 27)), 27);
+}
