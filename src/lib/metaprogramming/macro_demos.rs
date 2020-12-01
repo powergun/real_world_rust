@@ -3,12 +3,11 @@ macro_rules! print_vec {
     () => {
         println!("empty!");
     };
-    ( $( $x:expr),* ) => {
+    ($($x:expr),*) => {
         {
-            $( println!("macro: {:?}", $x); )*
+            $(println!("macro: {:?}", $x);)*
         }
     };
-
 }
 
 #[test]
