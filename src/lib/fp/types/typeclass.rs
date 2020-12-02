@@ -7,7 +7,11 @@ pub trait DataTrait {
     // ctor
     fn new(a: i32, b: String) -> Self;
 
-    // meth
+    // meth; 
+    // meth could either be instance-meth (taking &self) or
+    // non-instance meth (not taking self, &self or &mut self)
+    // meth(self) consumes the instance;
+    // meth(&mut self) mutates the instance;
     fn get_value(&self) -> i32;
     fn to_str(&self) -> String;
 }
