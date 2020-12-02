@@ -40,9 +40,9 @@ fn demo_array_slice() {
     //                     0  1  2 indices of the slice
     let sxs = &xs[3..5];
     assert_eq!(sxs[0], 3);
-    
+
     // slice size is determined at runtime
-    
+
     {
         // out of bound
         // be careful, the code can be compiled but will crash at
@@ -52,7 +52,7 @@ fn demo_array_slice() {
     }
 
     // update array element via slice
-    
+
     {
         let sxs = &mut xs[1..3];
         // sxs is of type `&mut [i32]`

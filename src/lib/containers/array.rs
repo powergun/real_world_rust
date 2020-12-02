@@ -64,6 +64,6 @@ fn safe_modify_elements() {
 fn array_iterator() {
     let xs = [0; 5];
     // can not collect to another array
-    let ys = xs.iter().map(|x| {x + 1}).collect::<Vec<i32>>();
+    let ys = xs.iter().map(|x| x + 1).collect::<Vec<i32>>();
     assert_eq!(ys.len(), 5);
 }

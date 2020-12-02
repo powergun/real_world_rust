@@ -50,7 +50,6 @@ fn demo_match_with_if_statement() {
 
 #[test]
 fn demo_match_tuple() {
-
     fn f(tpl: (i32, i32)) -> i32 {
         match tpl {
             (1, _) => 1_000_000,

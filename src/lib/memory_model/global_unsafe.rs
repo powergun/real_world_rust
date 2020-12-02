@@ -6,5 +6,4 @@ fn demo_use_global_var() {
     unsafe {
         A = 1;
     }
-
 }

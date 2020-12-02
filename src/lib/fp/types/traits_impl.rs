@@ -40,14 +40,13 @@ trait Collapse<T: Add> {
 // static dispatch
 impl Collapse<i32> for Vec<i32> {
     fn collapse(&self) -> i32 {
-        self.iter().fold(0, |acc, x| { acc + x })
+        self.iter().fold(0, |acc, x| acc + x)
     }
 }
 
 // dynamic dispatch
 #[allow(dead_code)]
-fn col<T>(_xs: &dyn Collapse<T>) {
-} 
+fn col<T>(_xs: &dyn Collapse<T>) {}
 
 #[test]
 fn demo_use_new_trait_for_vector() {
@@ -58,6 +57,6 @@ fn demo_use_new_trait_for_vector() {
     // time
     assert_eq!(10, xs.collapse());
 
-    // use dynamical dispatch at runtime 
+    // use dynamical dispatch at runtime
     col(&xs);
 }

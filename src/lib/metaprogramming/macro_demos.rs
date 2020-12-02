@@ -4,9 +4,9 @@ macro_rules! print_vec {
         println!("empty!");
     };
 
-    // use () instead of { {} } 
+    // use () instead of { {} }
     // $(...)* is to repeat ... expression until the match
-    // case no longer applies 
+    // case no longer applies
     ($($x:expr),*) => (
         $(println!("macro: {:?}", $x);)*
     );
@@ -29,7 +29,7 @@ macro_rules! single_param_unit {
 macro_rules! single_param {
     ($x: expr) => {
         $x
-    }
+    };
 }
 
 #[test]
@@ -50,16 +50,12 @@ fn demo_single_param_macro() {
 macro_rules! head_tail {
     // this is similar to [] list notation in Haskell;
     // to match an expression with no element
-    () => {
-
-    };
+    () => {};
     // this is similar to (hd::tl) notation in Haskell;
     // the entire expression must consist of at least one
     // head element (hd), and optionally, any number of tail
     // elements (tl);
-    ($($x: expr), *) => {
-
-    };
+    ($($x: expr), *) => {};
 }
 
 #[test]

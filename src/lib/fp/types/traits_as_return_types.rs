@@ -1,4 +1,3 @@
-
 trait Animal {
     fn make_noise(&self) -> i32;
 }
@@ -7,11 +6,15 @@ struct Dog;
 struct Cat;
 
 impl Animal for Dog {
-    fn make_noise(&self) -> i32 { 1 }
+    fn make_noise(&self) -> i32 {
+        1
+    }
 }
 
 impl Animal for Cat {
-    fn make_noise(&self) -> i32 { 2 }
+    fn make_noise(&self) -> i32 {
+        2
+    }
 }
 
 // can not return bare trait - the compiler does not know the

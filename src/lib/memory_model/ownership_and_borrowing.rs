@@ -1,4 +1,3 @@
-
 // this is the first level of useless-ness.
 
 #[test]
@@ -27,7 +26,7 @@ fn demo_immu_borrowing_of_container_type() {
     // this is equivalent to C++'s move assignment
     // let ys = *_xs_ref1;
 
-    // I need to tell the compiler explicitly that I want to 
+    // I need to tell the compiler explicitly that I want to
     // clone the underlying block of memory
     let ys = _xs_ref1.clone();
     // assert_eq! uses by-reference parameters
@@ -37,7 +36,7 @@ fn demo_immu_borrowing_of_container_type() {
 #[test]
 fn demo_mut_borrowing_of_primitive_type() {
     let mut x = 0;
-    
+
     let _x_ref1 = &x;
 
     let x_ref = &mut x;

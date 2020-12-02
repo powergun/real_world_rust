@@ -1,6 +1,4 @@
-
 // string slices are immutable
-
 
 // taking &str to enforce immutability and avoid copying
 #[allow(dead_code)]
@@ -27,7 +25,7 @@ fn demo_function_param_string_slice() {
 #[test]
 fn demo_static_string_slice() {
     fn f() -> &'static str {
-        "e1m1"        
+        "e1m1"
     }
     let ss: &'static str = f();
     assert!(ss.len() > 0);

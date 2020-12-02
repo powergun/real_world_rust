@@ -1,4 +1,3 @@
-
 #[test]
 fn demo_num_var_definitions() {
     let million = 1_000_000;
