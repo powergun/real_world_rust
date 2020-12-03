@@ -3,6 +3,12 @@ use std::collections::HashMap;
 #[allow(unused_imports)]
 use std::env::args; // args() function
 
+// see also data_munging/sqlite/db_read_write.rs
+// that example shows a useful technique that implicitly converts
+// certain Error type to Result<T, E> so that I can use ? notation
+// seamlessly (instead of manually matching the individual Error
+// and creating E)
+
 #[test]
 fn use_optional_return_value_from_hashmap() {
     let mut hm: HashMap<String, String> = HashMap::new();
