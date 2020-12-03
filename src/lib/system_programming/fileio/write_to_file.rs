@@ -16,6 +16,8 @@ fn write_to_file(path: &str, content: &str) -> io::Result<()> {
     // to create, write and truncate a file
     // recall Go's create() function
 
+    // because write_to_file returns a Result type, I can think of
+    // it as a monad and use `?` as the monad <- (go) notation
     let file = File::create(path)?;
 
     // wrap the file in a BufWriter
@@ -35,7 +37,11 @@ there is a cow
 #[test]
 fn demo_append_and_read() {
     let append_to = |path: &str, content: &str| -> io::Result<()> {
-        let file = OpenOptions::new().read(true).append(true).open(path)?;
+        let file = OpenOptions::new()
+            // use a builder pattern
+            .read(true)
+            .append(true)
+            .open(path)?;
 
         // rust std lib cookbook P/91
         // we can read and write on the same file handle - we
