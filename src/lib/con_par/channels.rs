@@ -7,6 +7,11 @@ use std::thread;
 
 #[test]
 fn demo_all() {
+    // the terminology varies;
+    // some prefer tx (for transmitter) and rx (for receiver)
+    // some prefer producer and consumer
+    // but the relation remains the same:
+    // something sends and something receives
     let (producer, consumer): (Sender<i32>, Receiver<i32>) = channel();
     // or let (producer, consumer) = channel::<i32>();
     let handles = (0..10).map(|i| {
