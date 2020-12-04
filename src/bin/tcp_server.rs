@@ -3,6 +3,11 @@ use clap::Clap;
 use std::string::FromUtf8Error;
 use std::io::{Error as IOError, Read};
 
+// read:
+// https://stackoverflow.com/questions/30552187/reading-from-a-tcpstream-with-readread-to-string-hangs-until-the-connection-is
+// https://wiki.haskell.org/Roll_your_own_IRC_bot
+// https://book.async.rs/tutorial/accept_loop.html
+
 #[derive(Clap)]
 #[clap(version = "0.1", author = "...")]
 struct Opts {
@@ -68,8 +73,10 @@ fn read_socket(mut socket: &TcpStream) -> Result<String, ServerError> {
 }
 
 fn serve_single_thread(mut socket: TcpStream, addr: SocketAddr) -> Result<(), ServerError> {
-    let s = read_socket(&socket)?;
-    println!("[{:?}] {}", addr, s);
+    loop {
+        let s = read_socket(&socket)?;
+        println!("[{:?}] {}", addr, s);
+    };
     Ok(())
 }
 
