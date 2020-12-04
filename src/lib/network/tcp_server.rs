@@ -8,7 +8,9 @@ use std::thread;
 use std::string::FromUtf8Error;
 use std::time::Duration;
 
+#[allow(dead_code)]
 const LOCAL: &str = "127.0.0.1:36000";
+#[allow(dead_code)]
 const MSG_SIZE: usize = 8;
 
 #[derive(Debug)]
@@ -17,18 +19,21 @@ pub enum ServerError {
     DecodeError(FromUtf8Error),
 }
 
+#[allow(dead_code)]
 impl From<IOError> for ServerError {
     fn from(err: IOError) -> Self {
         ServerError::IOError(err)
     }
 }
 
+#[allow(dead_code)]
 impl From<FromUtf8Error> for ServerError {
     fn from(err: FromUtf8Error) -> Self {
         ServerError::DecodeError(err)
     }
 }
 
+#[allow(dead_code)]
 fn decode_message(buff: Vec<u8>) -> Option<String> {
     let raw_msg = buff
         //
@@ -42,6 +47,7 @@ fn decode_message(buff: Vec<u8>) -> Option<String> {
     }
 }
 
+#[allow(dead_code)]
 pub fn some() -> Result<(), ServerError> {
     let server = TcpListener::bind(LOCAL)?;
 

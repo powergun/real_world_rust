@@ -26,6 +26,9 @@ struct Opts {
     /// Some input. Because this isn't an Option<T> it's required to be used
     input: String,
     /// A level of verbosity, and can be used multiple times
+    // Vary the output based on how many times the user used the "verbose" flag
+    // (i.e. 'myprog -v -v -v' or 'myprog -vvv' vs 'myprog -v'
+    //                 3                    3               1
     #[clap(short, long, parse(from_occurrences))]
     verbose: i32,
     #[clap(subcommand)]
