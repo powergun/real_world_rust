@@ -1,6 +1,8 @@
 // FP in rust L586
 
 // enum type in rust can take parameters and generic type params
+// rust compiler uses fixed-size mem allocation for enum types,
+// the size is equal to the size of the largest variant of the enum.
 pub enum BTree<T> {
     Node {
         val: T,
