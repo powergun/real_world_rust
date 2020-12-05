@@ -1,4 +1,4 @@
-use std::io::{stdin, Read, BufReader, BufRead};
+use std::io::{stdin, BufReader, BufRead};
 use std::io;
 use std::fs::{File, metadata};
 use std::path::Path;
@@ -27,18 +27,6 @@ struct Record {
 }
 
 type MapT = HashMap<String, usize>;
-
-macro_rules! set {
-    ( $( $x:expr ),* ) => {  // Match zero or more comma delimited items
-        {
-            let mut temp_set = HashSet::new();  // Create a mutable HashSet
-            $(
-                temp_set.insert($x); // Insert each item matched into the HashSet
-            )*
-            temp_set // Return the populated HashSet
-        }
-    };
-}
 
 struct FileFilter {
     file_ext_black_list: HashSet<String>,

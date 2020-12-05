@@ -38,10 +38,6 @@ name = "rs_echo"
 path = "src/bin/rs_echo.rs"
 
 [[bin]]
-name = "tcp_server"
-path = "src/bin/tcp_server.rs"
-
-[[bin]]
 name = "rs_cloc"
 path = "src/bin/rs_cloc.rs"
 
