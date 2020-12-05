@@ -1,3 +1,5 @@
+// see bin/rs_cloc for how filter_map() is used in a real world application
+// it improves performance
 
 #[test]
 fn demo_vector_map_filter() {
