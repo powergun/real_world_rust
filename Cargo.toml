@@ -41,6 +41,10 @@ path = "src/bin/rs_echo.rs"
 name = "tcp_server"
 path = "src/bin/tcp_server.rs"
 
+[[bin]]
+name = "rs_cloc"
+path = "src/bin/rs_cloc.rs"
+
 # see:
 # https://doc.rust-lang.org/nightly/cargo/reference/cargo-targets.html
 # https://doc.rust-lang.org/nightly/cargo/guide/project-layout.html
