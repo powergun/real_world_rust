@@ -4,6 +4,7 @@ use std::fs::{File, metadata};
 use std::path::Path;
 use std::ffi::OsStr;
 use std::collections::HashMap;
+use rayon::prelude::*;
 
 fn read_from_stdin() -> Vec<String> {
     let mut lines: Vec<String> = vec![];
@@ -68,12 +69,12 @@ fn summarise(map: &MapT, max_num: usize) {
 fn main() {
     let lines = read_from_stdin();
     let mut map = MapT::new();
-    lines.iter()
-        .filter(|line| accept(line))
-        .for_each(|line| {
-            if let Ok(record) = create_loc_record(line) {
-                update(record, &mut map);
-            }
-        });
+    let records = lines.par_iter()
+        .filter(|line| accept(&line))
+        .map(|line| create_loc_record(&line))
+        .filter(|result| result.is_ok())
+        .map(|result| result.unwrap())
+        .collect::<Vec<Record>>();
+    records.into_iter().for_each(|record| update(record, &mut map));
     summarise(&map, 10);
 }
