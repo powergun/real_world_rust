@@ -30,3 +30,12 @@ fn demo_static_string_slice() {
     let ss: &'static str = f();
     assert!(ss.len() > 0);
 }
+
+#[test]
+fn demo_string_slice_and_str() {
+    let mut s: String = "e1m1".to_string();
+    let sub1 = &s[1..3]; // sub1 is of &str; range [1..3] is exclusive [1, 3)
+    assert_eq!(sub1, "1m");
+
+    let _sub2 = &mut s[1..3];
+}

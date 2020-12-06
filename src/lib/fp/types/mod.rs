@@ -6,3 +6,4 @@ pub mod traits_create;
 pub mod traits_impl;
 pub mod typealias;
 pub mod typeclass;
+mod traits_std_ops;

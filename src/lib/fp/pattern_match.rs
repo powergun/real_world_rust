@@ -63,3 +63,16 @@ fn demo_match_tuple() {
 
     assert_eq!(f((-1, 27)), 27);
 }
+
+#[test]
+fn demo_ref_pattern() {
+    // source:
+    // https://doc.rust-lang.org/rust-by-example/scope/borrow/ref.html
+    let c = 'Q';
+
+    // A `ref` borrow on the left side of an assignment is equivalent to
+    // an `&` borrow on the right side.
+    let ref ref_c1 = c;
+    let ref_c2 = &c;
+    assert_eq!(ref_c1, ref_c2);
+}
