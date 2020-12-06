@@ -1,7 +1,7 @@
 #[allow(dead_code)]
-fn quick_sort<T: PartialOrd>(xs: &mut Vec<T>) {
+fn quick_sort<T: PartialOrd + Copy>(xs: &mut Vec<T>) {
     // directly copied from the C++ impl
-    fn f<T: PartialOrd>(xs: &mut Vec<T>, first: usize, last: usize) {
+    fn f<T: PartialOrd + Copy>(xs: &mut Vec<T>, first: usize, last: usize) {
         if last - first > 1 {
             let mut p = last;
             for i in first + 1..last {
