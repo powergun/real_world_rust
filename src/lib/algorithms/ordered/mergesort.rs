@@ -27,6 +27,8 @@ fn merge(xs: &[i32], ys: &[i32], o: &mut Vec<i32>) {
 #[allow(dead_code)]
 fn merge_sort(xs: &[i32]) -> Vec<i32> {
     if xs.len() > 1 {
+        // slice-splitting, see:
+        // https://doc.rust-lang.org/std/primitive.slice.html#method.split_at
         let (a, b) = xs.split_at(xs.len() / 2);
         let av = merge_sort(a);
         let bv = merge_sort(b);
