@@ -8,3 +8,4 @@ pub mod pattern_match;
 pub mod result_option_types;
 pub mod types;
 mod recursion;
+mod maybe;

@@ -85,11 +85,12 @@ impl Iterator for LogIterator {
 
     fn next(&mut self) -> Option<String> {
         let current_link = self._current.clone();
-        let mut result = None;
+        let mut result: Option<String> = None;
         self._current = match current_link {
             Some(ref current_cell) => {
                 let current_ref = current_cell.borrow();
-                result = Some(current_ref.value.clone());
+                let x: String = current_ref.value.clone();
+                result = Some(x);
                 current_ref.next.clone()
             }
             None => None,

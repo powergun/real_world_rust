@@ -73,6 +73,8 @@ fn demo_fibonacci_iterator() {
 
     let xs: Vec<_> = fib().take(4).collect();
     assert_eq!(vec![0, 1, 1, 2], xs);
+
+    assert_eq!(fib().take(11).last().unwrap(), 55);
 }
 
 #[test]
