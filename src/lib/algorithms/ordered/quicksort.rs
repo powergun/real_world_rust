@@ -55,7 +55,12 @@ fn quick_sort_rand<T: PartialOrd + Debug>(xs: &mut Vec<T>) {
 fn quick_sort_rayon<T: PartialOrd + Send>(xs: &mut Vec<T>) {
     // use rayon::join() to distribute the workload to multiple threads;
     // recall TBB's parallel_invoke() function
-    // rayon::join() puts the second computation to
+
+    // rayon::join() puts the second computation to a queue and runs the
+    // the first computation in the current thread;
+    // when some worker/thread is free, it will "steal" the computation
+    // in the queue;
+    // in TBB's terminology, this mechanism is composable
     fn f<T: PartialOrd + Send>(xs: &mut [T]) {
         if xs.len() > 1 {
             let p = pivot(xs);
